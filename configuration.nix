@@ -54,6 +54,7 @@
   # Enable the KDE Desktop Environment.
   services.xserver.displayManager.kdm.enable = false;
   services.xserver.desktopManager.kde4.enable = false;
+  services.xserver.displayManager.sessionCommands = "xsetroot -cursor_name left_ptr";
   security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";  
 
