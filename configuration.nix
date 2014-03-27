@@ -25,15 +25,15 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  environment.systemPackages =
-    [ pkgs.vim 
-      pkgs.sudo
-      pkgs.emacs
-      pkgs.wget
-      pkgs.git 
-      pkgs.cairo
-      pkgs.zsh
-    ];
+  environment.systemPackages = with pkgs; [
+      vim 
+      sudo
+      emacs
+      wget
+      git 
+      cairo
+      zsh
+  ];
   programs.zsh.enable = true;
   # List services that you want to enable:
 
@@ -54,7 +54,11 @@
   # Enable the KDE Desktop Environment.
   services.xserver.displayManager.kdm.enable = false;
   services.xserver.desktopManager.kde4.enable = false;
-  services.xserver.displayManager.sessionCommands = "xsetroot -cursor_name left_ptr";
+  services.xserver.displayManager.sessionCommands =
+    ''
+      xsetroot -cursor_name left_ptr
+	  feh --bg-scale "$HOME/.wallpaper.jpg"
+    '';
   security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";  
 
